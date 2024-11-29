@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.projetomenandro">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo_png"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProjetoMenandro"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".Activity.MainActivityMenu"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:exported="false" />
+        <activity android:name=".Activity.cadastro_activity" />
+        <activity android:name=".Activity.MainActivity"
+            android:configChanges="orientation|screenSize"
+            />
+        <activity android:name=".Activity.fase1" />
+        <activity android:name=".Activity.fase2" />
+        <activity android:name=".Activity.fase3" />
+        <activity android:name=".Activity.Congratulations" />
+        <activity android:name=".Activity.jogo" />
+        <activity android:name=".Activity.quests" />
+        <activity android:name=".Activity.AulasActivity" />
+        <activity android:name=".Activity.Feedback"/>
+        <activity
+            android:name=".Activity.login_activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

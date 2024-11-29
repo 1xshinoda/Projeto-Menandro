@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">KingTEA</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="title_activity_inicial">inicial</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="EsqSenha">Redefinir Senha</string>
+    <string name="Cadastro">Cadastra-se</string>
+    <string name="uso">uso</string>
+    <string name="Fazerlogin">uso</string>
+    <string name="question_image_desc">Descrição da imagem de questão</string>
+    <string name="image_circulo">circulo.png</string>
+    <string name="image_quadrado">quadrado.png</string>
+    <string name="image_triangulo">triangulo.png</string>
+    <string name="image_hexagono">hexagono.png</string>
+    <string name="image_trianguloazul">trianguloazul.png</string>
+    <string name="title_activity_inicio">inicio</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
