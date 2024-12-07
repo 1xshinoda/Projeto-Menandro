@@ -28,7 +28,7 @@ public class login_activity extends AppCompatActivity {
     EditText CampoEmail, CampoSenha;
     Button botaologin;
     private FirebaseAuth auth;
-    TextView BTcadastrar; // Referência para o TextView de cadastro
+    TextView BTcadastrar, esqueceuSenha; // Referência para o TextView de cadastro
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,17 @@ public class login_activity extends AppCompatActivity {
         auth = configuraBD.fireauth();
 
         inicializarCampo();
+
+        // Configurar o clique no TextView "Esqueceu sua senha?"
+        esqueceuSenha = findViewById(R.id.editEsqueceuSenha);
+        esqueceuSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Redirecionar para a tela de "Esqueceu a Senha"
+                Intent intent = new Intent(login_activity.this, EsqueciSenha_Activity.class);
+                startActivity(intent);
+            }
+        });
 
         // Encontrando o TextView pelo ID
         BTcadastrar = findViewById(R.id.BTcadastrar);
@@ -49,6 +60,7 @@ public class login_activity extends AppCompatActivity {
             }
         });
     }
+
 
     // Método que chama a nova Activity para cadastro
     public void cadastrar(View v) {
@@ -102,6 +114,7 @@ public class login_activity extends AppCompatActivity {
             }
         });
     }
+
 
     // Método para abrir o menu principal após login
     private void abrirMenu() {

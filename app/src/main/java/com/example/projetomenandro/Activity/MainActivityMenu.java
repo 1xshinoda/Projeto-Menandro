@@ -10,20 +10,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projetomenandro.R;
 import com.example.projetomenandro.Util.configuraBD;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivityMenu extends AppCompatActivity {
     private FirebaseAuth auth;
     DrawerLayout drawerLayout;
     ImageButton buttonDrawerToggle;
     NavigationView navigationView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,16 +77,17 @@ public class MainActivityMenu extends AppCompatActivity {
                     Toast.makeText(MainActivityMenu.this, "Perfil Clicado", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.navCart) {
                     Toast.makeText(MainActivityMenu.this, "Sobre Clicado", Toast.LENGTH_SHORT).show();
-
                 } else if (itemId == R.id.buttonAulas) {
                     // Navegar para a Activity de Aulas
                     Intent intent = new Intent(MainActivityMenu.this, AulasActivity.class);
                     startActivity(intent);
                 } else if (itemId == R.id.navOrders) {
-                    Toast.makeText(MainActivityMenu.this, "Orders Clicado", Toast.LENGTH_SHORT).show();
+                    // Navegar para a Activity de Emergência
+                    Intent emergencyIntent = new Intent(MainActivityMenu.this, EmergencyActivity.class);
+                    startActivity(emergencyIntent);
                 } else if (itemId == R.id.navFeedBack) {
                     Toast.makeText(MainActivityMenu.this, "FeedBack Clicado", Toast.LENGTH_SHORT).show();
-                    // Navegar para a Activity de Sobre
+                    // Navegar para a Activity de Feedback
                     Intent intent = new Intent(MainActivityMenu.this, Feedback.class);
                     startActivity(intent);
                 } else if (itemId == R.id.navTerms) {
@@ -118,7 +117,5 @@ public class MainActivityMenu extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
-
 }

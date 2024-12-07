@@ -49,40 +49,41 @@
         app:layout_constraintEnd_toEndOf="@id/containerlogin"
 
         />
+
     <EditText
         android:id="@+id/EditEmailLogin"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Nome de Usuário:"
-        android:drawableLeft="@drawable/person_header"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/container_edit_text_all"
-        android:padding="15dp"
+        android:drawableLeft="@drawable/person_header"
+        android:hint="Nome da criança"
         android:inputType="text"
         android:maxLines="1"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="40dp"
-        app:layout_constraintTop_toBottomOf="@id/textdesc"
-        app:layout_constraintStart_toStartOf="@+id/containerlogin"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="@+id/containerlogin"
+        app:layout_constraintStart_toStartOf="@+id/containerlogin"
+        app:layout_constraintTop_toBottomOf="@id/textdesc"
 
 
         />
+
     <EditText
         android:id="@+id/EditTextEmail"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Email:"
-        android:drawableLeft="@drawable/email"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginVertical="10dp"
         android:background="@drawable/container_edit_text_all"
-        android:padding="15dp"
+        android:drawableLeft="@drawable/email"
+        android:hint="Email do responsável"
         android:inputType="text"
         android:maxLines="1"
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="40dp"
-        app:layout_constraintTop_toBottomOf="@id/EditEmailLogin"
-        app:layout_constraintStart_toStartOf="@+id/containerlogin"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="@+id/containerlogin"
-        />
+        app:layout_constraintStart_toStartOf="@+id/containerlogin"
+        app:layout_constraintTop_toBottomOf="@id/EditEmailLogin" />
 
     <EditText
         android:id="@+id/EditLoginSenha"
@@ -93,7 +94,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/container_edit_text_all"
         android:drawableLeft="@drawable/phone"
-        android:hint="Telefone:"
+        android:hint="Telefone do responsável:"
         android:inputType="number"
         android:maxLines="1"
         android:padding="15dp"

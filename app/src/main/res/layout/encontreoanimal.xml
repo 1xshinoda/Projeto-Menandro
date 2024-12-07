@@ -1,116 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background"
-    tools:context=".Activity.jogo">
+    android:padding="16dp"
+    android:background="@drawable/background">
 
+    <!-- Botão de voltar ao menu principal -->
     <ImageButton
         android:id="@+id/voltarmenu1"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/homeblack"
-        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/iv_dog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/homeblack"
+        android:contentDescription="Voltar ao menu principal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.061"
-        tools:ignore="NotSibling" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Título do jogo -->
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Encontre o Animal"
         android:textSize="32sp"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/voltarmenu1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Instruções do jogo -->
     <TextView
         android:id="@+id/tv_instruction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Toque no cachorro"
+        android:text="Toque no animal indicado"
         android:textSize="24sp"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_title"
-        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Layout de grade para exibir os animais -->
     <GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_instruction"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
         android:columnCount="2"
-        android:rowCount="2"
-        android:padding="16dp">
+        app:layout_constraintTop_toBottomOf="@id/tv_instruction"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_restart">
 
+        <!-- Imagem do cachorro -->
         <ImageView
             android:id="@+id/iv_dog"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/image_border"
+            android:layout_margin="8dp"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/dog" />
+            android:src="@drawable/dog_gif"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Cachorro animado" />
 
+        <!-- Imagem do gato -->
         <ImageView
             android:id="@+id/iv_cat"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/image_border"
+            android:layout_margin="8dp"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/cat" />
+            android:src="@drawable/cat_gif"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Gato animado" />
 
+        <!-- Imagem do pássaro -->
         <ImageView
             android:id="@+id/iv_bird"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/image_border"
+            android:layout_margin="8dp"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/bird" />
+            android:src="@drawable/bird_gif"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Pássaro animado" />
 
+        <!-- Imagem do peixe -->
         <ImageView
             android:id="@+id/iv_fish"
             android:layout_width="140dp"
             android:layout_height="140dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/image_border"
+            android:layout_margin="8dp"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/fish" />
+            android:src="@drawable/fish_gif"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="Peixe animado" />
     </GridLayout>
 
+    <!-- Botão de reiniciar o jogo -->
     <Button
         android:id="@+id/btn_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/gridLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:text="Reiniciar"
-        android:backgroundTint="@color/button_color"
-        android:textColor="@color/button_text_color"
         android:textSize="20sp"
         android:padding="12dp"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif-medium"
-        android:visibility="gone" />
-</RelativeLayout>
+        android:backgroundTint="@color/button_color"
+        android:textColor="@color/button_text_color"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/gridLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

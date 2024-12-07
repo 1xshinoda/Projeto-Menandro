@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.projetomenandro">
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,13 @@
         <activity android:name=".Activity.MainActivity"
             android:configChanges="orientation|screenSize"
             />
+
+        <activity android:name=".Activity.EsqueciSenha_Activity" />
+        <activity android:name=".Activity.EmergencyActivity" />
+
+
+
+
         <activity android:name=".Activity.fase1" />
         <activity android:name=".Activity.fase2" />
         <activity android:name=".Activity.fase3" />

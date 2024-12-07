@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
 
-    tools:context=".Activity.">
+    tools:context=".Activity.EsqueciSenha_Activity">
 
 <TextView
     android:id="@+id/containerEsqSenha"
