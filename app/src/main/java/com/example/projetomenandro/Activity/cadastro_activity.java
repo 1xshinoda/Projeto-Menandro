@@ -1,5 +1,6 @@
 package com.example.projetomenandro.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.widget.TextView;
 
 import com.example.projetomenandro.Modelos.Usuario;
 import com.example.projetomenandro.R;
@@ -27,11 +30,28 @@ public class cadastro_activity extends AppCompatActivity {
     EditText CampoNome, CampoEmail, CampoSenha, CampoTel;
     Button botaoCadastrar;
 
+    TextView BTcadastrar;
+    TextView VoltarLogin;
+
     @Override
     protected void onCreate(Bundle SavedInstance) {
         super.onCreate(SavedInstance);
         setContentView(R.layout.cadastro_main);
         inicializar();
+
+
+        // Encontrando o TextView pelo ID
+        VoltarLogin = findViewById(R.id.VoltarLogin);
+
+        // Configurando o OnClickListener no TextView para redirecionar para a tela de cadastro
+        VoltarLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(cadastro_activity.this, login_activity.class);
+                startActivity(intent); // Inicia a LoginActivity
+            }
+        });
+
     }
 
     private void inicializar() {
