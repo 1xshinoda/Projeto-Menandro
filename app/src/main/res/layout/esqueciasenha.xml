@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/AZUL_PRIMARIA"
 
     tools:context=".Activity.EsqueciSenha_Activity">
 
@@ -87,10 +87,11 @@
 
     />
 
-<Button
+<androidx.appcompat.widget.AppCompatButton
     style="@style/Button1"
     android:id="@+id/BtConfirmNovSenha"
     android:text="Troca!"
+    android:textColor="@color/black"
     app:layout_constraintTop_toBottomOf="@id/EditTextConfirmNovSenha"
     app:layout_constraintStart_toStartOf="@id/containerEsqSenha"
     app:layout_constraintEnd_toEndOf="@id/containerEsqSenha"

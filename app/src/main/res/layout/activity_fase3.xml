@@ -6,7 +6,7 @@
     android:alignmentMode="alignMargins"
     android:columnCount="3"
     android:rowCount="5"
-    android:background="@drawable/background"
+    android:background="@color/AZUL_PRIMARIA"
     android:padding="16dp"
     android:useDefaultMargins="true">
 

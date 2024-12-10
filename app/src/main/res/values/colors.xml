@@ -5,15 +5,20 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <color name="blue">#2196F3</color>
     <color name="teal_200">#80CBC4</color>
     <color name="teal_700">#00796B</color>
     <color name="NEON">#871DA0</color>
     <color name="NEON1">#8c52ff</color>
-    <color name="BRANCO">#E3E1E2</color>
-    <color name="AZUL">#20AAE5</color>
-    <color name="VERMELHO">#FF5B6C </color>
-    <color name="AMARELO">#FFDE7A</color>
+
+    <color name="BRANCO">#FFFFFF</color>
+    <color name="AZUL_PRIMARIA">#4061F8</color>
+    <color name="VERMELHO_TERCEIRA">#F46262</color>
+    <color name="AMARELO_SECUNDARIA">#FFBD59</color>
+    <color name="holo_red_dark">#ffcc0000</color>
+    <color name="holo_blue_dark">#ff0099cc</color>
+
     <color name="background_color">#FFF176</color> <!-- Yellow -->
     <color name="title_color">#F44336</color> <!-- Red -->
     <color name="text_color">#3F51B5</color> <!-- Blue -->

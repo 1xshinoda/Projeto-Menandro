@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@color/AZUL_PRIMARIA"
     tools:context=".Activity.Feedback">
 
     <ImageButton
@@ -53,16 +53,30 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/container_edit_text_login"
         android:hint="O que podemos melhorar?"
         android:inputType="text"
-        android:layout_marginTop="100dp"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/containerlogin"
         app:layout_constraintEnd_toEndOf="@+id/containerlogin"
-        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="@+id/containerlogin"
         app:layout_constraintTop_toTopOf="@+id/containerlogin"
-        app:layout_constraintVertical_bias="0.172" />
+        app:layout_constraintVertical_bias="0.111" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/FeedBack"
+        style="@style/Button1"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="52dp"
+        android:text="Enviar!"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/containerlogin"
+        app:layout_constraintEnd_toEndOf="@+id/containerlogin"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/containerlogin"
+        app:layout_constraintTop_toBottomOf="@+id/EditFeedback"
+        app:layout_constraintVertical_bias="0.992" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

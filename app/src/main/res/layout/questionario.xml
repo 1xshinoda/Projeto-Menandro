@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Activity.quests"
-    android:background="@drawable/background">
+    android:background="@color/AZUL_PRIMARIA">
 
     <ImageButton
         android:id="@+id/voltarmenu1"
@@ -52,11 +52,12 @@
         android:padding="16dp">
 
         <!-- Exemplo de botão de resposta -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/answer_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Button1"
+            android:textColor="@color/black"
             android:text="Resposta 1"
             android:textSize="18sp"
             android:layout_marginBottom="10dp"/>
