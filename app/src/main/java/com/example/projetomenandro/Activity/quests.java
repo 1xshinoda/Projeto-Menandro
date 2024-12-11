@@ -78,7 +78,7 @@ public class quests extends AppCompatActivity {
         for (int i = 0; i < question.getAnswers().length; i++) {
             Button answerButton = new Button(this);
             answerButton.setText(question.getAnswers()[i]);
-            answerButton.setBackground(getResources().getDrawable(R.drawable.rounded_button));
+            answerButton.setBackground(getResources().getDrawable(R.drawable.buttongames));
             answerButton.setLayoutParams(new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT

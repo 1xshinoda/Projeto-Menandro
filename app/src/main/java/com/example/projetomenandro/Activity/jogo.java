@@ -4,18 +4,21 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetomenandro.R;
 import com.bumptech.glide.Glide;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +35,7 @@ public class jogo extends AppCompatActivity {
     private String[] animals = {"cachorro", "gato", "peixe", "pássaro"};
     private int currentAnimalIndex = 0;
     private boolean gameActive = true;
-    private int level = 1;  // 1 = Fácil, 2 = Médio, 3 = Difícil
+    private int level = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,69 +51,45 @@ public class jogo extends AppCompatActivity {
         btnRestart = findViewById(R.id.btn_restart);
         imageButton = findViewById(R.id.voltarmenu1);
 
-        // Embaralha os animais e configura o som e as instruções iniciais
         shuffleAnimals();
         playAnimalSound(animals[currentAnimalIndex]);
         updateInstruction();
 
-        // Carregar os GIFs usando Glide
         Glide.with(this).asGif().load(R.drawable.dog_gif).into(ivDog);
         Glide.with(this).asGif().load(R.drawable.cat_gif).into(ivCat);
         Glide.with(this).asGif().load(R.drawable.bird_gif).into(ivBird);
         Glide.with(this).asGif().load(R.drawable.fish_gif).into(ivFish);
 
-        // Definir os listeners dos animais para tornar o jogo interativo
-        View.OnClickListener animalClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (gameActive) {
-                    String selectedAnimal = getSelectedAnimal(v.getId());
-                    // Reproduzir som do animal instantaneamente ao toque
-                    playAnimalSound(selectedAnimal);
-                    // Adicionar animação ao toque
-                    animateOnTouch(v);
-                    // Verificar se a escolha está correta
-                    checkAnimal(selectedAnimal, v);
-                }
+        View.OnClickListener animalClickListener = v -> {
+            if (gameActive) {
+                String selectedAnimal = getSelectedAnimal(v.getId());
+                playAnimalSound(selectedAnimal);
+                animateOnTouch(v);
+                checkAnimal(selectedAnimal, v);
             }
         };
 
-        // Associar os listeners às imagens dos animais
         ivDog.setOnClickListener(animalClickListener);
         ivCat.setOnClickListener(animalClickListener);
         ivBird.setOnClickListener(animalClickListener);
         ivFish.setOnClickListener(animalClickListener);
 
-        // Listener para reiniciar o jogo
-        btnRestart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                restartGame();
-            }
-        });
+        btnRestart.setOnClickListener(v -> restartGame());
 
-        // Listener para voltar ao menu principal
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(jogo.this, MainActivityMenu.class);
-                startActivity(intent);
-            }
+        imageButton.setOnClickListener(v -> {
+            Intent intent = new Intent(jogo.this, MainActivityMenu.class);
+            startActivity(intent);
         });
     }
 
-    // Método para embaralhar a lista de animais
     private void shuffleAnimals() {
         ArrayList<String> animalList = new ArrayList<>(Arrays.asList(animals));
         Collections.shuffle(animalList);
         animalList.toArray(animals);
     }
 
-    // Método para reproduzir o som de um animal específico
     private void playAnimalSound(String animal) {
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-        }
+        stopCurrentAnimalSound();
         switch (animal) {
             case "cachorro":
                 mediaPlayer = MediaPlayer.create(this, R.raw.dog_bark);
@@ -128,16 +107,12 @@ public class jogo extends AppCompatActivity {
         mediaPlayer.start();
     }
 
-    // Método para reproduzir som de erro
     private void playErrorSound() {
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-        }
+        stopCurrentAnimalSound();
         mediaPlayer = MediaPlayer.create(this, R.raw.wrong_sound);
         mediaPlayer.start();
     }
 
-    // Método para obter o nome do animal baseado no ID da view
     private String getSelectedAnimal(int viewId) {
         if (viewId == R.id.iv_dog) {
             return "cachorro";
@@ -152,13 +127,12 @@ public class jogo extends AppCompatActivity {
         }
     }
 
-    // Método para verificar se o animal selecionado está correto
     private void checkAnimal(String selectedAnimal, View view) {
         if (selectedAnimal.equals(animals[currentAnimalIndex])) {
-            showToastMessage("Correto! Muito bem!");
+            showSnackbarMessage("Correto! Muito bem!");
             animateCorrectChoice(view);
-            if (currentAnimalIndex < animals.length - 1) {
-                currentAnimalIndex++;
+            currentAnimalIndex++;
+            if (currentAnimalIndex < animals.length) {
                 playAnimalSound(animals[currentAnimalIndex]);
                 updateInstruction();
             } else {
@@ -167,32 +141,42 @@ public class jogo extends AppCompatActivity {
                 gameActive = false;
             }
         } else {
-            showToastMessage("Tente novamente.");
-            playErrorSound();  // Reproduzir som de erro
+            showSnackbarMessage("Tente novamente.");
+            playErrorSound();
             animateIncorrectChoice(view);
         }
     }
 
-    // Método para mostrar mensagens de Toast
-    private void showToastMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    private void showSnackbarMessage(String message) {
+        View container = findViewById(R.id.containerlogin);
+        Snackbar snackbar = Snackbar.make(container, message, Snackbar.LENGTH_SHORT);
+        View snackbarView = snackbar.getView();
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackbarView.getLayoutParams();
+        params.width = container.getWidth();
+        snackbarView.setLayoutParams(params);
+        snackbar.show();
     }
 
-    // Método para animar uma escolha correta (rotação completa)
+    private void stopCurrentAnimalSound() {
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+
     private void animateCorrectChoice(View view) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0f, 360f);
         animator.setDuration(1000);
         animator.start();
     }
 
-    // Método para animar uma escolha incorreta (balançar a imagem)
     private void animateIncorrectChoice(View view) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationX", 0f, 50f, -50f, 0f);
         animator.setDuration(500);
         animator.start();
     }
 
-    // Método para animar ao toque (efeito de pulsação)
     private void animateOnTouch(View view) {
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", 1f, 1.1f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", 1f, 1.1f, 1f);
@@ -202,7 +186,6 @@ public class jogo extends AppCompatActivity {
         scaleY.start();
     }
 
-    // Método para reiniciar o jogo
     private void restartGame() {
         shuffleAnimals();
         currentAnimalIndex = 0;
@@ -212,7 +195,6 @@ public class jogo extends AppCompatActivity {
         btnRestart.setVisibility(View.GONE);
     }
 
-    // Método para atualizar as instruções na tela
     private void updateInstruction() {
         tvInstruction.setText("Toque no " + animals[currentAnimalIndex]);
     }
