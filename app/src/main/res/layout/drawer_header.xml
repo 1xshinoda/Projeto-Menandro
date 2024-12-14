@@ -33,11 +33,6 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textColor="#1B1B1B"
-        android:textSize="18sp"/>
+
 
 </LinearLayout>

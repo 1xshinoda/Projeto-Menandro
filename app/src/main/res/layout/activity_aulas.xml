@@ -79,7 +79,7 @@
                     android:id="@+id/btnPlayAudio1"
                     android:layout_width="90dp"
                     android:layout_height="35dp"
-                    android:background="@drawable/button_atividades"
+                    android:background="@drawable/button"
                     android:text="Play Áudio"
                     android:textColor="@color/white"/>
 

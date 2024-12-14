@@ -2,6 +2,7 @@ package com.example.projetomenandro.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
@@ -40,30 +41,34 @@ public class MainActivityMenu extends AppCompatActivity {
             }
         });
 
-        Button buttonJoguinho = findViewById(R.id.joguinho);
-        buttonJoguinho.setOnClickListener(new View.OnClickListener() {
+        // Substituindo o botão "Jogar" pela lógica do CardView
+        CardView cardJogar = findViewById(R.id.card_jogar); // CardView com o ID "card_jogar"
+        cardJogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivityMenu.this, MainActivity.class);
+                // Quando o card "Jogar" for clicado, abre a tela de jogo (GameMenuActivity)
+                Intent intent = new Intent(MainActivityMenu.this, MainActivity.class); // Substitua "GameMenuActivity" pelo nome correto da sua Activity de jogo
                 startActivity(intent);
             }
         });
 
-        Button buttonJoguinho2 = findViewById(R.id.joguinho2);
-        buttonJoguinho2.setOnClickListener(new View.OnClickListener() {
+        // Substituindo o botão "Aulas" pela lógica do CardView
+        CardView cardAulas = findViewById(R.id.card_estudar); // CardView com o ID "card_aulas"
+        cardAulas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivityMenu.this, jogo.class);
+                // Quando o card "Aulas" for clicado, abre a tela de AulasActivity
+                Intent intent = new Intent(MainActivityMenu.this, AulasActivity.class);
                 startActivity(intent);
             }
         });
-
-        Button buttonJoguinho3 = findViewById(R.id.joguinho3);
-        buttonJoguinho3.setOnClickListener(new View.OnClickListener() {
+        // Outras lógicas para os outros botões, como o de Emergência
+        CardView cardemergencia = findViewById(R.id.card_emergencia); // CardView com o ID "card_aulas"
+        cardemergencia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivityMenu.this, quests.class);
-                startActivity(intent);
+                Intent emergencyIntent = new Intent(MainActivityMenu.this, EmergencyActivity.class);
+                startActivity(emergencyIntent);
             }
         });
 
@@ -77,15 +82,7 @@ public class MainActivityMenu extends AppCompatActivity {
                     Toast.makeText(MainActivityMenu.this, "Perfil Clicado", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.navCart) {
                     Toast.makeText(MainActivityMenu.this, "Sobre Clicado", Toast.LENGTH_SHORT).show();
-                } else if (itemId == R.id.buttonAulas) {
-                    // Navegar para a Activity de Aulas
-                    Intent intent = new Intent(MainActivityMenu.this, AulasActivity.class);
-                    startActivity(intent);
-                } else if (itemId == R.id.navOrders) {
-                    // Navegar para a Activity de Emergência
-                    Intent emergencyIntent = new Intent(MainActivityMenu.this, EmergencyActivity.class);
-                    startActivity(emergencyIntent);
-                } else if (itemId == R.id.navFeedBack) {
+                }   else if (itemId == R.id.navFeedBack) {
                     Toast.makeText(MainActivityMenu.this, "FeedBack Clicado", Toast.LENGTH_SHORT).show();
                     // Navegar para a Activity de Feedback
                     Intent intent = new Intent(MainActivityMenu.this, Feedback.class);
@@ -96,7 +93,7 @@ public class MainActivityMenu extends AppCompatActivity {
                     Toast.makeText(MainActivityMenu.this, "Contatos Clicado", Toast.LENGTH_SHORT).show();
                 } else if (itemId == R.id.navShare) {
                     deslogar();
-                } else if (itemId == R.id.joguinho) {
+                } else if (itemId == R.id.card_jogar) {
                     Intent intent = new Intent(MainActivityMenu.this, MainActivity.class);
                     startActivity(intent);
                 }
